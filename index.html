@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Мультиагентная система для SMM · Aivion</title>
-  <meta name="description" content="Кейс о том, как мультиагентная система автоматизировала контент-пайплайн для 23 Telegram-каналов и ускорила выпуск постов в 20 раз."/>
+  <title>Среда для работы с локальной LLM · Aivion</title>
+  <meta name="description" content="Кейс о том, как веб-среда для локальной LLM ускорила проверку гипотез в 10 раз и снизила ручные действия на 80%."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
@@ -217,11 +217,11 @@
       <div class="cases-menu">
         <button class="cases-btn" id="casesToggle" aria-expanded="false" aria-controls="casesDropdown">Все кейсы</button>
         <div class="cases-dropdown" id="casesDropdown">
-          <a class="cases-item" href="#">Мультиагентная система SMM</a>
-          <a class="cases-item" href="#">AI-Микросервис для колл-центра</a>
+          <a class="cases-item" href="#">Среда для локальной LLM</a>
+          <a class="cases-item" href="#">AI-микросервис для колл-центра</a>
           <a class="cases-item" href="#">PromptLab</a>
           <a class="cases-item" href="#">Составитель ТЗ</a>
-          <a class="cases-item" href="#">Корпоративная PBMS система</a>
+          <a class="cases-item" href="#">Корпоративная BPMS система</a>
         </div>
       </div>
 
@@ -233,8 +233,8 @@
         <a class="nav-link" href="#stack">Стек</a>
         <div class="mobile-cases" aria-label="Список кейсов">
           <span class="mobile-cases-title">Все кейсы</span>
-          <a class="cases-item" href="#">Мультиагентная система SMM</a>
-          <a class="cases-item" href="#">AI microservice</a>
+          <a class="cases-item" href="#">Среда для локальной LLM</a>
+          <a class="cases-item" href="#">AI-Микросервис для колл-центра</a>
           <a class="cases-item" href="#">PromptLab</a>
           <a class="cases-item" href="#">Автогенерация TZ</a>
           <a class="cases-item" href="#">Корпоративная BPMS система</a>
@@ -244,42 +244,41 @@
   </header>
 
   <div class="case-hero">
-    <h1 class="case-title reveal">Мультиагентная система <br> для <span class="hi">SMM</span></h1>
-    <p class="case-lead reveal">К нам обратилось маркетинговое агентство (NDA), управляющее 23 Telegram-каналами разных тематик. Подготовка одного поста занимала около часа, ограничивала масштабирование и снижала качество контента при росте нагрузки на команду.</p>
+    <h1 class="case-title reveal">Среда для работы <br> с <span class="hi">локальной LLM</span></h1>
+    <p class="case-lead reveal">К нам обратился R&D-отдел крупного маркетингового агентства (NDA), интегрировавший AI в процессы копирайтинга и аналитики. После перехода на локальные LLM в целях безопасности данных команда столкнулась с резким падением удобства работы и скорости генерации.</p>
   </div>
 
   <div class="section-divider"></div>
 
   <article class="case-body">
-    <div class="section-heading reveal" id="problem"><h2>Какую проблему мы обнаружили</h2></div>
-    <p class="reveal">SMM-специалист вручную проходил все этапы: придумывал тему, писал текст, искал изображения и оформлял публикацию. На один пост стабильно уходило около 50 минут.</p>
-    <p class="reveal">При 23 каналах это превращалось в конвейер, где человек работал как робот. <span class="problem-accent">Ключевой вывод:</span> корневая проблема была в архитектуре процесса — один специалист закрывал четыре принципиально разные задачи одновременно, что снижало качество каждого этапа и делало масштабирование невозможным без найма.</p>
-    <p class="reveal"><strong>Цель проекта:</strong> автоматизировать полный цикл создания контента и обеспечить единый стандарт качества без расширения штата.</p>
+    <div class="section-heading reveal" id="problem"><h2>Какую проблему мы выявили</h2></div>
+    <p class="reveal">Нетехнические специалисты работали с моделью через терминал и конфигурационные файлы. Это делало сравнение ответов медленным, усложняло управление параметрами и увеличивало количество ручных действий при каждом эксперименте.</p>
+    <p class="reveal">Один и тот же промпт приходилось запускать вручную 5–10 раз, результаты было трудно сопоставлять в едином интерфейсе, а настройка temperature и seed требовала редактирования конфигов. <span class="problem-accent">Ключевой вывод:</span> ограничение было не в модели, а в отсутствии удобной среды взаимодействия.</p>
 
     <div class="block-sep"></div>
 
     <div class="section-heading reveal" id="solution"><h2>Решение</h2></div>
-    <p class="reveal"><strong>Мы разработали веб-приложение с мультиагентной архитектурой, где каждый этап производства поста закреплён за отдельным AI-агентом.</strong></p>
+    <p class="reveal"><strong>Мы разработали веб-интерфейс для работы с локальной LLM, который объединяет генерацию, тестирование и управление параметрами в одном окне.</strong></p>
     <div class="solution-flow reveal">
       <div class="flow-step">
         <span class="flow-dot"></span>
         <div>
-          <h3>Разделение ответственности</h3>
-          <p>Агенты не конкурируют за контекст и не мешают друг другу: каждый выполняет только свою часть пайплайна, что обеспечивает стабильный и предсказуемый результат.</p>
+          <h3>Пакетная генерация</h3>
+          <p>Один промпт запускается до 20 раз одной кнопкой, а ответы формируются параллельно для мгновенного визуального сравнения стабильности модели.</p>
         </div>
       </div>
       <div class="flow-step">
         <span class="flow-dot"></span>
         <div>
-          <h3>Жёсткий конвейер</h3>
-          <p>Результат каждого этапа передаётся следующему через типизированный JSON-бриф. Агент не может продолжить работу без валидного входа.</p>
+          <h3>Управление параметрами</h3>
+          <p>Отдельная панель даёт контроль над Temperature, Top-P, Top-K, Max Tokens и seed без необходимости редактировать файлы вручную.</p>
         </div>
       </div>
       <div class="flow-step">
         <span class="flow-dot"></span>
         <div>
-          <h3>Контроль качества генерации</h3>
-          <p>Такой подход снижает галлюцинации и исключает генерацию «в никуда», потому что каждый шаг ограничен конкретной задачей и чётким контрактом данных.</p>
+          <h3>Асинхронность и стриминг</h3>
+          <p>Генерации идут в фоновых потоках, интерфейс не блокируется, а результаты поступают по мере готовности через SSE.</p>
         </div>
       </div>
     </div>
@@ -287,53 +286,53 @@
     <div class="block-sep"></div>
 
     <div class="section-heading reveal" id="architecture"><h2>Архитектура решения</h2></div>
-    <div class="architecture-system reveal" aria-label="Диаграмма мультиагентной архитектуры">
+    <div class="architecture-system reveal" aria-label="Диаграмма архитектуры решения">
       <div class="architecture-agents">
-        <article class="agent-node agent-node--tl"><h4>Агент-планировщик</h4><p>Формирует структуру поста, ключевые мысли и формат подачи. На выходе создаёт бриф, а не черновой текст.</p></article>
-        <article class="agent-node agent-node--bl"><h4>Агент-копирайтер</h4><p>Пишет текст строго по брифу и не отвлекается на структуру или форматирование, что даёт более чистый и точный контент.</p></article>
-        <article class="agent-node agent-node--tr"><h4>Агент-форматировщик</h4><p>Адаптирует материал под Telegram: абзацы, эмодзи и CTA. Работает только с формой, не меняя смысл сообщения.</p></article>
-        <article class="agent-node agent-node--br"><h4>Агент-редактор</h4><p>Проверяет грамотность, выравнивает стиль и контролирует tone of voice перед финальной выдачей в публикацию.</p></article>
+        <article class="agent-node agent-node--tl"><h4>Пакетная генерация</h4><p>Параллельный запуск одного промпта до 20 раз ускоряет анализ стабильности и исключает ручные повторы.</p></article>
+        <article class="agent-node agent-node--bl"><h4>Панель параметров</h4><p>Temperature, Top-P, Top-K, Max Tokens и seed настраиваются через UI, что снижает порог входа для нетехнических специалистов.</p></article>
+        <article class="agent-node agent-node--tr"><h4>Асинхронный backend + SSE</h4><p>Генерации выполняются в фоновых потоках, ответы приходят в реальном времени, а интерфейс остаётся отзывчивым.</p></article>
+        <article class="agent-node agent-node--br"><h4>Single-file развёртывание</h4><p>Один Python-файл, запуск без серверной инфраструктуры и БД, развёртывание примерно за 30 секунд в локальной сети.</p></article>
       </div>
     </div>
 
     <div class="block-sep"></div>
 
     <div class="section-heading reveal" id="example"><h2>Пример использования</h2></div>
-    <p class="reveal"><strong>Входные данные от SMM-менеджера:</strong> аудитория — предприниматели, цель — продажа услуги автоматизации, тезисы — сокращение времени, снижение затрат, рост выручки.</p>
+    <p class="reveal"><strong>Ниже — практический roadmap проверки гипотезы:</strong> от ввода промпта до выбора оптимальной конфигурации без ручной рутины.</p>
 
-    <div class="roadmap-vertical reveal" aria-label="Roadmap создания поста">
+    <div class="roadmap-vertical reveal" aria-label="Roadmap работы с локальной LLM">
       <article class="roadmap-item left">
         <div class="roadmap-content">
-          <h4>Формирование брифа</h4>
-          <p>Планировщик создаёт заголовок и структуру поста: проблема, последствия, решение и призыв к действию.</p>
+          <h4>Ввод промпта</h4>
+          <p>Пользователь формулирует задачу в интерфейсе и подготавливает гипотезу для тестирования.</p>
         </div>
         <span class="roadmap-marker"></span>
       </article>
       <article class="roadmap-item right">
         <span class="roadmap-marker"></span>
         <div class="roadmap-content">
-          <h4>Написание текста</h4>
-          <p>Копирайтер генерирует основной текст строго по утверждённой структуре без отклонений от брифа.</p>
+          <h4>Выбор параметров</h4>
+          <p>Настраиваются temperature, количество прогонов и seed для контролируемого и воспроизводимого эксперимента.</p>
         </div>
       </article>
       <article class="roadmap-item left">
         <div class="roadmap-content">
-          <h4>Telegram-адаптация</h4>
-          <p>Форматировщик подготавливает пост для публикации: разбивает блоки, добавляет визуальные акценты и CTA.</p>
+          <h4>Параллельный запуск</h4>
+          <p>Система одновременно запускает несколько генераций и обрабатывает их в фоне без блокировки интерфейса.</p>
         </div>
         <span class="roadmap-marker"></span>
       </article>
       <article class="roadmap-item right">
         <span class="roadmap-marker"></span>
         <div class="roadmap-content">
-          <h4>Финальная редактура</h4>
-          <p>Редактор исправляет ошибки, проверяет единый стиль и финализирует пост к отправке менеджеру.</p>
+          <h4>Стриминг результатов</h4>
+          <p>Ответы отображаются в реальном времени по мере готовности, что ускоряет анализ и принятие решений.</p>
         </div>
       </article>
       <article class="roadmap-item left">
         <div class="roadmap-content">
-          <h4>Публикация</h4>
-          <p>Готовый пост поступает менеджеру на быстрый контроль и после подтверждения публикуется в нужном канале.</p>
+          <h4>Выбор конфигурации</h4>
+          <p>Пользователь сравнивает варианты, фиксирует лучший результат и завершает гипотезу за один цикл.</p>
         </div>
         <span class="roadmap-marker"></span>
       </article>
@@ -344,16 +343,16 @@
     <div class="section-heading reveal" id="results"><h2>Результаты</h2></div>
     <div class="hero-results reveal" aria-label="Ключевые результаты">
       <div class="metric-card">
-        <div class="metric-value">x20</div>
-        <div class="metric-note">Скорость подготовки поста: ~50 минут → ~2 минуты</div>
+        <div class="metric-value">x10</div>
+        <div class="metric-note">Проверка гипотез: ~5 минут → ~30 секунд</div>
       </div>
       <div class="metric-card">
         <div class="metric-value">−80%</div>
-        <div class="metric-note">Ручной работы за счёт автоматизации рутинных этапов и переноса роли специалиста в контроль качества</div>
+        <div class="metric-note">Ручных действий за счёт пакетной генерации и автоматизации тестирования</div>
       </div>
       <div class="metric-card">
-        <div class="metric-value">x2.3</div>
-        <div class="metric-note">Рост ERR благодаря единой структуре, корректному форматированию и встроенным CTA</div>
+        <div class="metric-value">100%</div>
+        <div class="metric-note">Переход на self-service: копирайтеры и аналитики работают без разработчиков</div>
       </div>
     </div>
 
@@ -362,16 +361,16 @@
     <div class="section-heading reveal" id="stack"><h2>Стек технологий</h2></div>
     <div class="tech-row reveal">
       <span class="tech-chip">Python</span>
-      <span class="tech-chip">LangChain</span>
-      <span class="tech-chip">OpenAI API</span>
-      <span class="tech-chip">FastAPI</span>
-      <span class="tech-chip">PostgreSQL</span>
-      <span class="tech-chip">Telegram Bot API</span>
+      <span class="tech-chip">Flask</span>
+      <span class="tech-chip">Ollama API</span>
+      <span class="tech-chip">Server-Sent Events (SSE)</span>
+      <span class="tech-chip">Threading</span>
+      <span class="tech-chip">HTML/CSS (glassmorphism, adaptive UI)</span>
     </div>
 
     <div class="cta-wrap reveal" id="cta">
-      <h3>Обсудим вашу SMM-задачу</h3>
-      <p>Покажем, как выстроить мультиагентный конвейер для контента, сократить время выпуска постов и масштабировать каналы без расширения команды.</p>
+      <h3>Обсудим вашу задачу</h3>
+      <p>Покажем, как выстроить удобную среду для локальной LLM, ускорить проверку гипотез и убрать ручную рутину из AI-процессов команды.</p>
       <a href="#" class="cta-btn" id="openBriefBtn">Запросить разбор</a>
     </div>
   </article>
